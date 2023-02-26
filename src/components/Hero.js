@@ -17,6 +17,7 @@ const Header = styled.header`
  height: 80px;
  width: 100%;
 
+
  @media screen and (max-width: 768px) {
   height: 60px;
  }
@@ -79,7 +80,7 @@ function Hero() {
  return (
   <Container>
    <Header>
-    <h2>My Website</h2>
+    <h1>My Website</h1>
     <Nav>
      <NavLinks>
       <NavItem>
@@ -96,7 +97,7 @@ function Hero() {
    </Header>
 
    <Main>
-    <h1>Welcome to my website</h1>
+    <h2>Welcome to my website</h2>
     <p>Explore my portfolio and blog</p>
    </Main>
 
