@@ -222,6 +222,10 @@ const Main = styled.main`
 //  height: 30vh;
 // `
 const Footer = styled.footer`
+ display: grid;
+ justify-content: center;
+ align-items: center;
+ flex-direction: column;
  background-color: #222;
  color: #fff;
 
@@ -232,23 +236,37 @@ const Footer = styled.footer`
 `
 const images = [
  {
-  src: 'https://res.cloudinary.com/elpawl-llc/image/upload/v1675866967/skyline_fhftgi.jpg',
+  src: 'https://res.cloudinary.com/elpawl-llc/image/upload/v1677435074/marbello1_bp2myf.jpg',
   alt: 'Image 1',
   title: 'Image 1',
   description:
    'Mar Belo Restaurant is a Portuguese, Spanish restaurant and wine bar featuring local and sustainable ingredients. We are located in Long Branch, NJ.',
  },
  {
-  src: 'https://res.cloudinary.com/elpawl-llc/image/upload/v1676508521/pexels-filippo-bergamaschi-2767737_fidye2.jpg',
+  src: 'https://res.cloudinary.com/elpawl-llc/image/upload/v1677435084/marbelo4_idqx5n.jpg',
   alt: 'Image 2',
   title: 'Image 2',
   description:
    'Inspired by the Beatiful Sea, our intimate dining experience is itself a destination. Immerse yourself in Portugal. Let use help you celebrate that special occasion.',
  },
  {
-  src: 'https://res.cloudinary.com/elpawl-llc/image/upload/v1676846332/902207_1e34262fb393244_ezgb7q.jpg',
+  src: 'https://res.cloudinary.com/elpawl-llc/image/upload/v1677435073/marbelo3_l6acv6.jpg',
   alt: 'Image 3',
   title: 'Image 3',
+  description:
+   ' Book your party today. Because we have limited space in our dining rooms, we recommend you reserve in advance.',
+ },
+ {
+  src: 'https://res.cloudinary.com/elpawl-llc/image/upload/v1677435285/marbelo5_sjcq5r.jpg',
+  alt: 'Image 4',
+  title: 'Image 4',
+  description:
+   ' Book your party today. Because we have limited space in our dining rooms, we recommend you reserve in advance.',
+ },
+ {
+  src: 'https://res.cloudinary.com/elpawl-llc/image/upload/v1677435073/marbelo2_osdqpy.jpg',
+  alt: 'Image 5',
+  title: 'Image 5',
   description:
    ' Book your party today. Because we have limited space in our dining rooms, we recommend you reserve in advance.',
  },
@@ -323,7 +341,10 @@ function Hero() {
    </Article> */}
 
    <Footer>
-    <p>&copy; 2023 My Website</p>
+    Copyright © [YEAR] [YOUR COMPANY NAME] All rights reserved. Address:
+    [COMPANY ADDRESS LINE 1] [COMPANY ADDRESS LINE 2] [COMPANY CITY], [COMPANY
+    STATE] [COMPANY ZIP CODE] Phone: [COMPANY PHONE NUMBER] Email: [COMPANY
+    EMAIL ADDRESS]
    </Footer>
   </Container>
  )

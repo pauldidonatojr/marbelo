@@ -6,7 +6,7 @@ const Carousel = ({ images }) => {
  useEffect(() => {
   const intervalId = setInterval(() => {
    setCurrentImage((currentImage + 1) % images.length)
-  }, 4000)
+  }, 6000)
 
   return () => clearInterval(intervalId)
  }, [currentImage, images.length])
@@ -19,7 +19,8 @@ const Carousel = ({ images }) => {
      className="carousel-image"
      style={{
       backgroundImage: `url(${image.src})`,
-      display: index === currentImage ? 'block' : 'none',
+      opacity: index === currentImage ? 1 : 0,
+      transition: 'opacity 1s ease-in-out',
      }}
     >
      <div className="carousel-text">
