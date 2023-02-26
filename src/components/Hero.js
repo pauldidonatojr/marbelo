@@ -7,6 +7,7 @@ import Carousel from './Carousel'
 const Container = styled.div`
  display: flex;
  flex-direction: column;
+ width: 100%;
  height: 100vh;
  background-color: black;
  border: 5px solid white;
