@@ -204,23 +204,22 @@ const Main = styled.main`
  align-items: center;
  height: 50vh;
 
-
  background-color: #e2b75c;
 
  margin-top: 3rem;
  margin-bottom: 3rem;
 `
 
-const Section = styled.section`
- background-color: #f8f8f8;
+// const Section = styled.section`
+//  background-color: #f8f8f8;
 
- height: 30vh;
-`
-const Article = styled.article`
- background-color: #f8f8f8;
+//  height: 30vh;
+// `
+// const Article = styled.article`
+//  background-color: #f8f8f8;
 
- height: 30vh;
-`
+//  height: 30vh;
+// `
 const Footer = styled.footer`
  background-color: #222;
  color: #fff;
