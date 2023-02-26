@@ -26,6 +26,18 @@ const Carousel = ({ images }) => {
      <div className="carousel-text">
       <h2>{image.title}</h2>
       <p>{image.description}</p>
+      <div>
+       <button
+        className="btn"
+        style={{
+         height: '2rem',
+         width: '6rem',
+        }}
+       >
+        {' '}
+        enter{' '}
+       </button>
+      </div>
      </div>
     </div>
    ))}
