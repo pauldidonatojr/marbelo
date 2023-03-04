@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import Hero2 from './Hero2.js'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import heroBcg from '../images/hero-bcg.jpeg'
@@ -288,7 +287,6 @@ const gradient3 = 'linear-gradient(to bottom right, #d3e9f0, #f4fcff)'
 const gradient4 = 'linear-gradient(to bottom right, #e4f2f8, #f4fcff)'
 
 function Hero() {
- const [currentSlide, setCurrentSlide] = useState(0)
  const [backgroundGradient, setBackgroundGradient] = useState(gradient1)
 
  useEffect(() => {
