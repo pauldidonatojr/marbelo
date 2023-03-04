@@ -5,20 +5,6 @@ import heroBcg from '../images/hero-bcg.jpeg'
 import heroBcg2 from '../images/hero-bcg-2.jpeg'
 import logo from '../images/marbelo.png'
 import { FaAdn, FaFacebook, FaInstagram } from 'react-icons/fa'
-const slides = [
- {
-  description: 'This is the content for slide 1',
-  gradient: 'linear-gradient(180deg, #ff7f50 0%, #ff4b2b 100%)',
- },
- {
-  description: 'This is the content for slide 2',
-  gradient: 'linear-gradient(180deg, #6495ed 0%, #4169e1 100%)',
- },
- {
-  description: 'This is the content for slide 3',
-  gradient: 'linear-gradient(180deg, #ff1493 0%, #c71585 100%)',
- },
-]
 
 const Container = styled.div`
  display: flex;
