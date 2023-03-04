@@ -1,330 +1,342 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
+import Hero2 from './Hero2.js'
 import styled from 'styled-components'
-import logo from '../images/logo.png'
-import { FaBars } from 'react-icons/fa'
-import { useGlobalContext } from '../utils/context.js'
-import Carousel from './Carousel'
+import { Link } from 'react-router-dom'
+import heroBcg from '../images/hero-bcg.jpeg'
+import heroBcg2 from '../images/hero-bcg-2.jpeg'
+import logo from '../images/marbelo.png'
+import { FaAdn, FaFacebook, FaInstagram } from 'react-icons/fa'
+const slides = [
+ {
+  description: 'This is the content for slide 1',
+  gradient: 'linear-gradient(180deg, #ff7f50 0%, #ff4b2b 100%)',
+ },
+ {
+  description: 'This is the content for slide 2',
+  gradient: 'linear-gradient(180deg, #6495ed 0%, #4169e1 100%)',
+ },
+ {
+  description: 'This is the content for slide 3',
+  gradient: 'linear-gradient(180deg, #ff1493 0%, #c71585 100%)',
+ },
+]
+
 const Container = styled.div`
  display: flex;
  flex-direction: column;
  width: 100%;
- height: 100vh;
- background-color: black;
- border: 2px solid white;
-`
-
-const Header = styled.header`
- display: flex;
- justify-content: center;
- align-items: center;
- background-color: whitesmoke;
-
- height: 165px;
- width: 100%;
- .logo {
-  max-width: 25vh;
-  height: auto;
+ height: 150vh;
+ transition: background-color 1s ease;
+ .btn2 {
+  text-transform: uppercase;
+  background: var(--clr-blue);
+  color: var(--clr-primary-10);
+  padding: 0.575rem 0.85rem;
+  letter-spacing: var(--spacing);
+  display: inline-block;
+  font-weight: 400;
+  transition: var(--transition);
+  font-size: 1.075rem;
+  cursor: pointer;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  border-radius: var(--radius);
+  border-color: transparent;
+  margin-bottom: 4rem;
  }
- @media screen and (min-width: 800px) {
-  height: 170px;
- }
-`
 
-const Nav = styled.nav`
- height: 6rem;
- display: flex;
- align-items: center;
- justify-content: center;
- background: transparent;
- position: relative;
- z-index: 1;
- background-color: #0055a5;
- .nav-center {
-  width: 90vw;
-  max-width: var(--max-width);
+ .btn2:hover {
+  color: var(--clr-primary-1);
+  background: var(--clr-primary-7);
  }
- .nav-header {
+ .content {
+  margin-top: 3rem;
+
+  height: 65vh;
+
+  width: 50vh;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
  }
- .btn {
-  font-size: 1rem;
-  width: 15vh;
-  height: 3vh;
-  padding: 0.25rem 0.75rem;
-  border-radius: var(--radius);
-  border-color: transparent;
-  color: white;
-  background: var(--clr-black);
-  cursor: pointer;
-  transition: var(--transition);
+ .logo {
+  width: 50vh;
+  height: 20vh;
+
+  object-fit: cover;
  }
- .btn:hover {
-  background: var(--clr-grey-5);
- }
- .nav-links {
+ .img-container {
   display: none;
- }
- .signin-btn {
-  display: none;
- }
- .hero::before {
-  content: '';
-  position: absolute;
-  width: 100%;
-  height: 65%;
-  top: 0;
-  left: 0;
-  background: url(./images/hero.svg);
-  background-size: cover;
-  background-repeat: no-repeat;
-  z-index: -1;
- }
- .hero {
-  position: relative;
-  min-height: 100vh;
-  margin-top: -5rem;
-  display: grid;
-  grid-template-columns: 1fr;
-  justify-items: center;
- }
- .hero-center {
-  width: 90vw;
-  max-width: var(--max-width);
-  display: grid;
-  align-items: center;
  }
 
- .hero-info h1 {
-  text-transform: none;
-  max-width: 500px;
+ p {
+  line-height: 2;
+  max-width: 45em;
   margin-bottom: 2rem;
+  color: var(--clr-grey-5);
+  font-size: 1.3rem;
  }
- .hero-info p {
-  max-width: 35em;
-  line-height: 1.8;
- }
- .hero-images {
-  display: none;
- }
-
- /* nav media query */
- @media screen and (min-width: 800px) {
-  .nav-center {
-   display: grid;
-   grid-template-columns: auto 1fr auto;
-   align-items: center;
+ @media (min-width: 992px) {
+  height: calc(100vh - 5rem);
+  grid-template-columns: 1fr 1fr;
+  gap: 8rem;
+  h1 {
+   margin-bottom: 2rem;
   }
-  .toggle-btn {
-   display: none;
-  }
-  .signin-btn {
-   display: inline-block;
-  }
-  .nav-links {
-   display: block;
-   justify-self: center;
-   display: grid;
-   grid-template-columns: 1fr 1fr 1fr;
-   text-align: center;
-   height: 100%;
-   display: grid;
-   align-items: center;
-  }
-  .nav-links li {
-   height: 100%;
-  }
-  .link-btn {
-   height: 100%;
-   background: transparent;
-   border-color: transparent;
-   font-size: 1.1rem;
-   color: white;
-   text-transform: capitalize;
-   letter-spacing: 1px;
-   width: 10rem;
-  }
- }
-
- /* hero media query */
- @media screen and (min-width: 800px) {
-  .hero::before {
-   background-size: contain;
-   height: 100%;
-  }
-  .hero-center {
-   grid-template-columns: 2fr 1fr;
-  }
-
-  .hero-info h1 {
-   font-size: 3rem;
-  }
-  .hero-info p {
+  p {
    font-size: 1.25rem;
   }
-  .hero-images {
+  .hero-btn {
+   padding: 0.75rem 1.5rem;
+   font-size: 1rem;
+  }
+  .img-container {
    display: block;
-   justify-self: center;
+   position: relative;
   }
-  .phone-img {
-   width: 12rem;
+  .main-img {
+   width: 100%;
+   height: 550px;
+   position: relative;
+   border-radius: var(--radius);
+   display: block;
+   object-fit: cover;
   }
- }
+  .accent-img {
+   position: absolute;
+   bottom: 0;
+   left: 0;
+   width: 250px;
+   transform: translateX(-50%);
+   border-radius: var(--radius);
+  }
+  .img-container::before {
+   content: '';
+   position: absolute;
+   width: 10%;
+   height: 80%;
 
- @media screen and (min-width: 1200px) {
-  .hero-center {
-   grid-template-columns: 2fr 1fr;
-   align-items: end;
-   padding-bottom: 12vh;
-  }
-  .hero-info h1 {
-   max-width: 100%;
-   font-size: 5.5rem;
-  }
-  .hero-images {
-   align-self: end;
-  }
-  .phone-img {
-   width: 15rem;
-  }
- }
- @media screen and (min-width: 1400px) {
-  .hero-center {
-   padding-bottom: 20vh;
-  }
-  .phone-img {
-   width: 17rem;
+   bottom: 0%;
+   left: -8%;
+   border-radius: var(--radius);
   }
  }
 `
 
-const Main = styled.main`
- display: flex;
- justify-content: center;
- align-items: center;
- height: 50vh;
+const Main = styled.section`
+ min-height: 45vh;
 
- background-color: #e2b75c;
-
- margin-top: 3rem;
- margin-bottom: 3rem;
-`
-
-// const Section = styled.section`
-//  background-color: #f8f8f8;
-
-//  height: 30vh;
-// `
-// const Article = styled.article`
-//  background-color: #f8f8f8;
-
-//  height: 30vh;
-// `
-const Footer = styled.footer`
  display: grid;
+ place-items: center;
+ .img-container {
+  display: none;
+ }
+
+ p {
+  line-height: 2;
+  max-width: 25em;
+  margin-bottom: 2rem;
+  color: var(--clr-grey-5);
+  font-size: 0.75rem;
+  font-weight: bold;
+ }
+ @media (min-width: 992px) {
+  height: calc(100vh - 5rem);
+  grid-template-columns: 1fr 1fr;
+  gap: 8rem;
+  h1 {
+   margin-bottom: 2rem;
+  }
+  p {
+   font-size: 1.25rem;
+  }
+  .hero-btn {
+   padding: 0.75rem 1.5rem;
+   font-size: 1rem;
+  }
+  .logo {
+   width: 50vh;
+   height: 20vh;
+  }
+  .img-container {
+   display: block;
+   position: relative;
+  }
+  .main-img {
+   width: 100%;
+   height: 550px;
+   position: relative;
+   border-radius: var(--radius);
+   display: block;
+   object-fit: cover;
+  }
+  .accent-img {
+   position: absolute;
+   bottom: 0;
+   left: 0;
+   width: 250px;
+   transform: translateX(-50%);
+   border-radius: var(--radius);
+  }
+  .img-container::before {
+   content: '';
+   position: absolute;
+   width: 10%;
+   height: 80%;
+   background: var(--clr-primary-9);
+   bottom: 0%;
+   left: -8%;
+   border-radius: var(--radius);
+  }
+ }
+`
+
+const Section = styled.section`
+ background-color: #f8f8f8;
+ width: 100%;
+
+ height: 30vh;
+`
+const Article = styled.article`
+ background-color: #f8f8f8;
+ width: 100%;
+ height: 30vh;
+`
+const Footer = styled.footer`
+ display: flex;
  justify-content: center;
  align-items: center;
  flex-direction: column;
  background-color: #222;
  color: #fff;
-
  text-align: center;
  bottom: 0;
  width: 100%;
- height: 20vh;
-`
-const images = [
- {
-  src: 'https://res.cloudinary.com/elpawl-llc/image/upload/v1677435074/marbello1_bp2myf.jpg',
-  alt: 'Image 1',
-  title: 'Image 1',
-  description:
-   'Mar Belo Restaurant is a Portuguese, Spanish restaurant and wine bar featuring local and sustainable ingredients. We are located in Long Branch, NJ.',
- },
- {
-  src: 'https://res.cloudinary.com/elpawl-llc/image/upload/v1677435084/marbelo4_idqx5n.jpg',
-  alt: 'Image 2',
-  title: 'Image 2',
-  description:
-   'Inspired by the Beatiful Sea, our intimate dining experience is itself a destination. Immerse yourself in Portugal. Let use help you celebrate that special occasion.',
- },
- {
-  src: 'https://res.cloudinary.com/elpawl-llc/image/upload/v1677435073/marbelo3_l6acv6.jpg',
-  alt: 'Image 3',
-  title: 'Image 3',
-  description:
-   ' Book your party today. Because we have limited space in our dining rooms, we recommend you reserve in advance.',
- },
- {
-  src: 'https://res.cloudinary.com/elpawl-llc/image/upload/v1677435285/marbelo5_sjcq5r.jpg',
-  alt: 'Image 4',
-  title: 'Image 4',
-  description:
-   ' Book your party today. Because we have limited space in our dining rooms, we recommend you reserve in advance.',
- },
- {
-  src: 'https://res.cloudinary.com/elpawl-llc/image/upload/v1677435073/marbelo2_osdqpy.jpg',
-  alt: 'Image 5',
-  title: 'Image 5',
-  description:
-   ' Book your party today. Because we have limited space in our dining rooms, we recommend you reserve in advance.',
- },
-]
+ height: 30vh;
 
-function Hero() {
- const { openSidebar, openSubmenu, closeSubmenu } = useGlobalContext()
+ .social-icons {
+  display: flex;
+  margin-top: 2rem;
 
- const displaySubmenu = (e) => {
-  const page = e.target.textContent
-  const tempBtn = e.target.getBoundingClientRect()
-  const center = (tempBtn.left + tempBtn.right) / 2
-  const bottom = tempBtn.bottom - 3
-  openSubmenu(page, { center, bottom })
- }
- const handleSubmenu = (e) => {
-  if (!e.target.classList.contains('link-btn')) {
-   closeSubmenu()
+  svg {
+   margin: 0 0.5rem;
+   font-size: 1.5rem;
   }
  }
+
+ p {
+  font-size: 0.85rem;
+  margin-top: 2rem;
+  line-height: 1.5;
+  max-width: 600px;
+  margin: 0 auto;
+  font-family: 'Open Sans', sans-serif;
+ }
+`
+
+const Carousel = ({ items, interval }) => {
+ const [index, setIndex] = useState(0)
+
+ useEffect(() => {
+  const timer = setInterval(() => {
+   setIndex((index) => (index + 1) % items.length)
+  }, interval)
+  return () => clearInterval(timer)
+ }, [items.length, interval])
+
+ return items[index]
+}
+const MainCarousel = () => (
+ <Carousel
+  items={[
+   <>
+    {' '}
+    <p>
+     {' '}
+     Indulge in the flavors of Portugal with our intimate dining experience,
+     inspired by the beauty of the sea. Our restaurant is the perfect
+     destination for any occasion, from a romantic evening for two to a
+     celebration with family and friends. With limited space in our dining
+     rooms, we recommend reserving in advance to ensure availability. Book your
+     party today and let us help you create a memorable experience{' '}
+    </p>{' '}
+   </>,
+   <p>
+    {' '}
+    Indulge in the flavors of Portugal with our intimate dining experience,
+    inspired by the beauty of the sea. Our restaurant is the perfect destination
+    family and friends. With limited space in our dining rooms, we recommend
+    reserving in advance to ensure availability. Book your party today and let
+    us help you create a memorable experience{' '}
+   </p>,
+   <p>
+    {' '}
+    inspired by the beauty of the sea. Our restaurant is the perfect destination
+    for any occasion, from a romantic evening for two to a celebration with
+    family and friends. With limited space in our dining rooms, we recommend
+    reserving in advance to ensure availability. Book your party today and let
+    us help you create a memorable experience{' '}
+   </p>,
+  ]}
+  interval={5000}
+ />
+)
+
+const gradient1 = 'linear-gradient(to bottom right, #88c3d0, #e3f6f5)'
+const gradient2 = 'linear-gradient(to bottom right, #b2d8e5, #d0e8f2)'
+const gradient3 = 'linear-gradient(to bottom right, #d3e9f0, #f4fcff)'
+const gradient4 = 'linear-gradient(to bottom right, #e4f2f8, #f4fcff)'
+
+function Hero() {
+ const [currentSlide, setCurrentSlide] = useState(0)
+ const [backgroundGradient, setBackgroundGradient] = useState(gradient1)
+
+ useEffect(() => {
+  const intervalId = setInterval(() => {
+   switch (backgroundGradient) {
+    case gradient1:
+     setBackgroundGradient(gradient2)
+     break
+    case gradient2:
+     setBackgroundGradient(gradient3)
+     break
+    case gradient3:
+     setBackgroundGradient(gradient4)
+     break
+    case gradient4:
+     setBackgroundGradient(gradient1)
+     break
+    default:
+     setBackgroundGradient(gradient1)
+     break
+   }
+  }, 5000)
+
+  return () => clearInterval(intervalId)
+ }, [backgroundGradient])
+
  return (
-  <Container>
-   <Header>
-    <img src={logo} className="logo" alt="" />
-   </Header>
-   <Nav onMouseOver={handleSubmenu}>
-    <div className="nav-center">
-     <div className="nav-header">
-      <button className="btn toggle-btn" onClick={openSidebar}>
-       <FaBars />
-      </button>
-     </div>
-
-     <ul className="nav-links">
-      <li>
-       <button className="link-btn" onMouseOver={displaySubmenu}>
-        menu
-       </button>
-      </li>
-      <li>
-       <button className="link-btn" onMouseOver={displaySubmenu}>
-        reversations
-       </button>
-      </li>
-      <li>
-       <button className="link-btn" onMouseOver={displaySubmenu}>
-        contact
-       </button>
-      </li>
-     </ul>
-    </div>
-   </Nav>
-
+  <Container style={{ background: backgroundGradient }}>
+   {/* <Carousel images={images} /> */}
    <Main>
-    <Carousel images={images} />
+    <article className="content">
+     <img src={logo} alt="logo" className="logo" />
+
+     <MainCarousel />
+
+     <span style={{ display: 'grid', justifyContent: 'center' }}>
+      <Link to="/products" className="btn2 hero-btn2">
+       Order Online
+      </Link>{' '}
+     </span>
+    </article>
+    <article className="img-container">
+     <img src={heroBcg} alt="nice table" className="main-img" />
+     <img src={heroBcg2} alt="person working" className="accent-img" />
+    </article>
    </Main>
 
-   {/* <Section>
+   <Section>
     <h2>About Me</h2>
     <p>
      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eu elit ac
@@ -338,13 +350,19 @@ function Hero() {
      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eu elit ac
      elit malesuada lobortis.
     </p>
-   </Article> */}
+   </Article>
 
    <Footer>
-    Copyright © [YEAR] [YOUR COMPANY NAME] All rights reserved. Address:
-    [COMPANY ADDRESS LINE 1] [COMPANY ADDRESS LINE 2] [COMPANY CITY], [COMPANY
-    STATE] [COMPANY ZIP CODE] Phone: [COMPANY PHONE NUMBER] Email: [COMPANY
-    EMAIL ADDRESS]
+    <div>
+     <FaAdn />
+    </div>
+    <div>
+     <p>611 Broadway, Long Branch, NJ 07740</p>
+    </div>
+    <div className="social-icons">
+     <FaFacebook className="fb" />
+     <FaInstagram className="ig" />
+    </div>
    </Footer>
   </Container>
  )

@@ -1,30 +1,52 @@
-import { FaCreditCard, FaBook, FaBriefcase } from 'react-icons/fa'
 import React from 'react'
-const sublinks = [
+import { FaBehance, FaFacebook, FaLinkedin, FaTwitter } from 'react-icons/fa'
+export const links = [
  {
-  page: 'menu',
-  links: [
-   { label: 'payment', icon: <FaCreditCard />, url: '/products' },
-   { label: 'terminal', icon: <FaCreditCard />, url: '/products' },
-   { label: 'connect', icon: <FaCreditCard />, url: '/products' },
-  ],
+  id: 1,
+  url: '/',
+  text: 'home',
  },
  {
-  page: 'reversations',
-  links: [
-   { label: 'plugins', icon: <FaBook />, url: '/products' },
-   { label: 'libraries', icon: <FaBook />, url: '/products' },
-   { label: 'help', icon: <FaBook />, url: '/products' },
-   { label: 'billing', icon: <FaBook />, url: '/products' },
-  ],
+  id: 2,
+  url: '/about',
+  text: 'about',
  },
  {
-  page: 'contact',
-  links: [
-   { label: 'about', icon: <FaBriefcase />, url: '/products' },
-   { label: 'customers', icon: <FaBriefcase />, url: '/products' },
-  ],
+  id: 3,
+  url: '/projects',
+  text: 'projects',
+ },
+ {
+  id: 4,
+  url: '/contact',
+  text: 'contact',
+ },
+ {
+  id: 5,
+  url: '/profile',
+  text: 'profile',
  },
 ]
 
-export default sublinks
+export const social = [
+ {
+  id: 1,
+  url: 'https://www.twitter.com',
+  icon: <FaFacebook />,
+ },
+ {
+  id: 2,
+  url: 'https://www.twitter.com',
+  icon: <FaTwitter />,
+ },
+ {
+  id: 3,
+  url: 'https://www.twitter.com',
+  icon: <FaLinkedin />,
+ },
+ {
+  id: 4,
+  url: 'https://www.twitter.com',
+  icon: <FaBehance />,
+ },
+]
