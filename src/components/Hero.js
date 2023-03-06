@@ -10,7 +10,7 @@ const Container = styled.div`
  display: flex;
  flex-direction: column;
  width: 100%;
- height: 150vh;
+ height: 130vh;
  transition: background-color 1s ease;
  .btn2 {
   text-transform: uppercase;
@@ -34,15 +34,20 @@ const Container = styled.div`
   background: var(--clr-primary-7);
  }
  .content {
-  margin-top: 3rem;
 
-  height: 65vh;
+
+  height: 60vh;
 
   width: 50vh;
+  margin-bottom: 2rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  @media (min-width: 992px) {
+
+    height: 80vh;
+  }
  }
  .logo {
   width: 50vh;
@@ -62,7 +67,7 @@ const Container = styled.div`
   font-size: 1.3rem;
  }
  @media (min-width: 992px) {
-  height: calc(100vh - 5rem);
+  height: calc(275vh - 5rem);
   grid-template-columns: 1fr 1fr;
   gap: 8rem;
   h1 {
@@ -181,11 +186,17 @@ const Section = styled.section`
  width: 100%;
 
  height: 30vh;
+ @media (min-width: 992px) {
+  height: 80vh;
+ }
 `
 const Article = styled.article`
  background-color: #f8f8f8;
  width: 100%;
  height: 30vh;
+ @media (min-width: 992px) {
+  height: 80vh;
+ }
 `
 const Footer = styled.footer`
  display: flex;
