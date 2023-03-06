@@ -7,7 +7,7 @@ import marbelo3 from '../images/marbelo3.jpg'
 
 const useStyles = makeStyles({
  card: {
-  maxWidth: 500,
+  maxWidth: 505,
   margin: '0 auto',
  },
  media: {
