@@ -1,24 +1,12 @@
 import React, { useState, useEffect } from 'react'
-import { makeStyles } from '@mui/styles'
 import { Card, CardMedia } from '@mui/material'
 import marbelo1 from '../images/marbelo1.jpg'
 import marbelo2 from '../images/marbelo2.jpg'
 import marbelo3 from '../images/marbelo3.jpg'
 
-const useStyles = makeStyles({
- card: {
-  maxWidth: 505,
-  margin: '0 auto',
- },
- media: {
-  height: 400,
- },
-})
-
 const images = [marbelo1, marbelo2, marbelo3]
 
 const TransitioningImages = () => {
- const classes = useStyles()
  const [currentImageIndex, setCurrentImageIndex] = useState(0)
 
  useEffect(() => {
@@ -29,9 +17,9 @@ const TransitioningImages = () => {
  }, [currentImageIndex])
 
  return (
-  <Card className={classes.card}>
+  <Card sx={{ maxWidth: 505, margin: '0 auto' }}>
    <CardMedia
-    className={classes.media}
+    sx={{ height: 400 }}
     image={images[currentImageIndex]}
     title="Random Image"
    />
