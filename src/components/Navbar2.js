@@ -29,7 +29,7 @@ function Navbar2(props) {
  const drawer = (
   <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
    <Typography variant="h6" sx={{ my: 2 }}>
-    MUI
+    Mar Belo
    </Typography>
    <Divider />
    <List>
@@ -59,8 +59,9 @@ function Navbar2(props) {
       onClick={handleDrawerToggle}
       sx={{ mr: 2, display: { sm: 'none' } }}
      >
-      <MenuIcon />
+      <MenuIcon style={{ width: '3rem', height: '2.5rem' }} />
      </IconButton>
+
      <Typography
       variant="h6"
       component="div"

@@ -167,7 +167,7 @@ useEffect(() => {
 }
 
 const Wrapper = styled.section`
- height: 75vh;
+ height: 80vh;
  display: grid;
  justify-content: center;
  place-items: center;
@@ -176,7 +176,9 @@ const Wrapper = styled.section`
  position: relative;
  z-index: -1;
  margin-top: 3rem;
-
+ .content {
+    margin-top: 3.5rem;
+ }
  @keyframes wave {
   0% {
    transform: translateX(0);
@@ -259,7 +261,7 @@ const Wrapper = styled.section`
   margin-top: 2.5rem;
   margin-bottom: 2rem;
   color: var(--white);
-  font-size: 0.95rem;
+  font-size: 1.2rem;
   font-weight: bold;
  }
 
